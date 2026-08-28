@@ -27,17 +27,18 @@ module FA_Gate(
   wire ps, pc1, pc2;
 
   //After doing the part b , I am changing the delays to single constant value, as the rise and fall delay takes too much time and the Auto Grader marks it as failed.
-  // xor #(2,3) (ps,  a,   b);
-  // and #(2,3) (pc1, a,   b);
-  // xor #(2,3) (sum, cin, ps);
-  // and #(2,3) (pc2, cin, ps);
-  // or  #(2,3) (cout, pc1, pc2);
+  //*Reverting back to the delays as this also makes the Autograder to fail .
+  xor #(2,3) (ps,  a,   b);
+  and #(2,3) (pc1, a,   b);
+  xor #(2,3) (sum, cin, ps);
+  and #(2,3) (pc2, cin, ps);
+  or  #(2,3) (cout, pc1, pc2);
 
-  xor #(2) (ps,  a,   b);
-  and #(2) (pc1, a,   b);
-  xor #(2) (sum, cin, ps);
-  and #(2) (pc2, cin, ps);
-  or  #(2) (cout, pc1, pc2);
+  // xor #(2) (ps,  a,   b);
+  // and #(2) (pc1, a,   b);
+  // xor #(2) (sum, cin, ps);
+  // and #(2) (pc2, cin, ps);
+  // or  #(2) (cout, pc1, pc2);
 
   //Reducing the Rise and fall delay and checking
   // xor #(1,2) (ps,  a,   b);
